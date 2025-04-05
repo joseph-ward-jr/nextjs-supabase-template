@@ -1,0 +1,53 @@
+# Generated files & Dependencies
+node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# Generated files & Dependencies
+node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+.next/
+.vercel/
+build/
+dist/
+out/
+
+# Cache directories
+.turbo/
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+*.log
+logs
+*.log*
+
+# Test reports
+coverage/
+# Build outputs
+.next/
+.vercel/
+build/
+dist/
+out/
+
+# Cache directories
+.turbo/
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+*.log
+logs
+*.log*
+
+# Test reports
+coverage/

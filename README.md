@@ -66,14 +66,39 @@ This template comes pre-configured with `shadcn/ui`.
 
 ## Testing
 
-This project uses [Playwright](https://playwright.dev/) for end-to-end testing.
+This project uses [Jest](https://jestjs.io/) for unit testing and [Playwright](https://playwright.dev/) for end-to-end testing.
 
-*   **Run all tests:**
+*   **Run all tests (unit, E2E, and linting):**
+    ```bash
+    npm test
+    ```
+
+*   **Run only unit tests:**
+    ```bash
+    npm run test:unit
+    ```
+
+*   **Run only E2E tests:**
     ```bash
     npm run test:e2e
     ```
-*   **Test Location:** Tests are located in the `/tests` directory (or adjust if co-located).
-*   **Configuration:** See `playwright.config.js` (or `jest.config.js` if using Jest).
+
+*   **Run E2E tests with UI:**
+    ```bash
+    npm run test:e2e:ui
+    ```
+
+*   **Test Locations:** 
+    - Unit tests are in `/tests/unit`
+    - E2E tests are in `/tests/e2e`
+
+*   **Configuration:** 
+    - Jest configuration is in `package.json`
+    - Playwright configuration is in `playwright.config.ts`
+
+*   **CI Integration:**
+    - GitHub Actions workflow runs all tests on push and PR
+    - Tests must pass before PRs can be merged to main
 
 ## Deployment
 

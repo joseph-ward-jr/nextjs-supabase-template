@@ -1,0 +1,26 @@
+VITAL:
+- **Testing Workflow:** After implementing or modifying **any** code unit (e.g., a single function, method, API route handler, significant UI component change) that could potentially introduce a bug or break existing functionality, the following testing cycle MUST be performed **immediately** before moving to any other task:
+
+    1.  **Create a Specific Test:** Write a new test case specifically for the code unit just implemented. Locate the appropriate test file (or create one if it doesn't exist) following the project's testing structure conventions.
+    2.  **Isolate and Run the New Test:** Execute *only* the newly created test case using runner flags (e.g., `npx jest <test_file_path> --testName ePattern="<new_test_case_name>" --verbose`) to isolate its execution.
+    3.  **Iterate on the New Test:** If the new test case fails, debug and modify **only the code unit being tested or the new test case itself**. Repeat step 2 until the new test case passes consistently. **DO NOT** modify any other existing test files or application code outside the scope of the new unit.
+    4.  **Run All Tests (Regression Check):** Once the new test case passes in isolation (Step 3), execute the **entire test suite** using the command `npm test`.
+    5.  **Analyze Full Suite Results:**
+        *   **All Tests Pass:** If the new test case passes *and* all pre-existing tests also pass, the code change is verified. Proceed to Step 6.
+        *   **Any Test Fails:** If *any* test fails (whether it's the new one or an older one), it indicates an issue, likely introduced by the recent code changes impacting other parts of the system, or an error in the new test's interaction. **STOP**. Go back to Step 3: Re-examine the newly implemented code unit and the new test case. Fix the underlying issue in the **new code unit or the new test**. **Crucially, DO NOT modify older, previously passing tests to make them fit the new code.** The goal is to ensure the new code integrates correctly without breaking existing functionality. Repeat Steps 3, 4, and 5 until all tests pass in the full suite run.
+    6.  **Update Documentation:** After successfully passing both the individual new test and the full test suite, update the `README.md` file to reflect the completion of the task associated with the implemented code unit. Mark the specific sub-task as complete or update its status.
+
+- **General Rules Before Responding:** Before generating any response or code:
+    1.  **Read Documentation:** Thoroughly read and analyze ALL relevant files in the `./docs/` directory, prioritizing those pertinent to the current task. Plus any relevant `README.md` files.
+    2.  **Process Fully:** Understand the entire content of each consulted documentation file.
+    3.  **Cross-Reference:** Identify dependencies and relationships between different documentation files.
+    4.  **Source of Truth:** Treat documentation as the primary authority for standards, architecture, and practices.
+    5.  **Align Response:** Explicitly ensure the response aligns with documented guidelines.
+    6.  **Identify Doc Updates:** Proactively identify documentation that needs updating due to proposed code changes or solutions.
+    7.  **Propose Doc Updates:** Automatically suggest specific, complete updates to relevant documentation files. Provide the full updated file content, avoiding ellipses or partial snippets.
+    8.  **Maintain VITAL Section:** Always preserve the `VITAL` section at the top of any documentation file being updated.
+    9.  **Highlight Inconsistencies:** Point out when documentation is outdated or contradicts the actual implementation.
+    10. **Prioritize Consistency:** Treat code and documentation as equally important deliverables, striving for consistency between them.
+    11. **Bug Tracking:** Once a bug is completely fixed and all tests are passing, add new bugs to `BUGS-AND-FIXES.md`. Reference this file to avoid reintroducing fixed bugs. Do not date the bug. Just append new bugs to the file. If the bug was already addressed previously, please do not add the current bug into the file.
+    12. **Safety:** Never suggest commands that permanently delete unrecoverable files (e.g., avoid deleting ignored files).
+    13. **End Prompt:** Conclude every response with "Then STOP and DO NOTHING ELSE".
